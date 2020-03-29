@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import {Container, Row, Col} from "react-bootstrap";
+import InvoicePreview from "./components/InvoicePreview/InvoicePreview";
 
-function App() {
+const App = () => {
+
+  const [style, setStyle] = useState('tradicional');
+  const [color, setColor] = useState('black');
+  const [lang, setLang] = useState('esp');
+  const [link, setLink] = useState(false);
+  const [numeracion, setNumeracion] = useState(true);
+  const [email, setEmail] = useState('');
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container fluid className={'mt-5'}>
+      <Row>
+        <Col sm={6}>
+          estilo
+          color
+          idioma
+          logo
+          enlace pago
+          numeracion
+          email
+        </Col>
+        <Col sm={6}>
+          <InvoicePreview theme={'cornflowerblue'}/>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
