@@ -1,3 +1,1 @@
-🔥🔥🔥 FACTURATOR 🔥🔥🔥
-
 ![](./splash.png)
