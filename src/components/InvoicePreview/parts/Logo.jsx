@@ -6,12 +6,13 @@ const Wrapper = styled.div`
     height: 50px;
     background: #dcdcdc;
     border-radius: 4px;
+    display: ${props => props.hasLogo ? 'block' : 'none'};
 `;
 
-const Logo = () => {
+const Logo = ({hasLogo}) => {
     return (
         <Col xs={6}>
-            <Wrapper/>
+            <Wrapper hasLogo={hasLogo}/>
         </Col>
     );
 };

@@ -7,12 +7,19 @@ import Persona from "./parts/Persona";
 import Lines from "./parts/Lines";
 import Payment from "./parts/Payment";
 import Summary from "./parts/Summary";
+import ModernPersona from "./parts/ModernPersona";
 
 const Wrapper = styled.div`
   height: 400px;
   border: 1px solid #333;
   padding: 10px;
   border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  
+  &:after {
+    content: '';
+  }
 `;
 
 const Separator = styled.hr`
@@ -20,18 +27,25 @@ const Separator = styled.hr`
     border-color: gainsboro;
 `;
 
-const InvoicePreview = ({theme}) => {
+const InvoicePreview = ({theme, hasLogo, style}) => {
+
+    const handleClick = () => {
+        window.location.href = 'http://google.es';
+    };
+
     return (
-        <Wrapper>
+        <Wrapper
+            onClick={handleClick}>
             <Row style={{marginBottom: '20px'}}>
-                <Logo/>
+                <Logo hasLogo={hasLogo}/>
                 <Header theme={theme}/>
             </Row>
             <Row style={{marginBottom: '20px'}}>
-                <Persona/>
-                <Persona/>
+                <Persona style={style}/>
+                {/* eslint-disable-next-line react/style-prop-object */}
+                <Persona style={'1'}/>
             </Row>
-            <Row style={{marginBottom: '10px'}}>
+            <Row style={{marginBottom: '0px'}}>
                 <Lines theme={theme}/>
             </Row>
             <Row style={{marginBottom: '10px'}}>
@@ -39,9 +53,14 @@ const InvoicePreview = ({theme}) => {
                     <Separator/>
                 </Col>
             </Row>
-            <Row>
+            <Row style={{marginBottom: '40px'}}>
                 <Payment/>
                 <Summary/>
+            </Row>
+            <Row>
+                <ModernPersona
+                    theme={theme}
+                    type={style}/>
             </Row>
         </Wrapper>
     );
